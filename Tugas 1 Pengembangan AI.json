@@ -1,0 +1,92 @@
+{
+  "name": "Tugas 1 Pengembangan AI",
+  "nodes": [
+    {
+      "parameters": {
+        "public": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        336,
+        256
+      ],
+      "id": "c655b163-60ed-4d45-8303-e293a12148ba",
+      "name": "When chat message received",
+      "webhookId": "1382fbd8-ccc4-44e5-a367-fa0437ef9c74"
+    },
+    {
+      "parameters": {
+        "options": {
+          "systemMessage": "Kamu adalah agen ai dari nf academy yang menjawab dan memberikan saran untuk mengikuti pelatihan komputer di nf academy dan selaku pihak penyedia kursus komputer"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        544,
+        256
+      ],
+      "id": "d05afc56-fa8e-445b-8636-8124df9f80e8",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        416,
+        464
+      ],
+      "id": "03f72859-5a90-4aa2-97e7-ab5d9d63ae46",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "RuhHAEpzzkxTxB5e",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "110be78d-6788-4916-88c3-617efdced129",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "319ed34c023179c9772a2ca816f1850d7973c99b9a6bf93ad829e6d9c254aa67"
+  },
+  "id": "DgoesCKqQt5nbmE9",
+  "tags": []
+}
